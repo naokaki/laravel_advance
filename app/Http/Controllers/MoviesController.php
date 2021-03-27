@@ -38,10 +38,10 @@ class MoviesController extends Controller
     public function destroy($id){
         $movie = Movie::find($id);
         
-        if(\Auth::id == $movie->user_id){
+        if(\Auth::id() == $movie->user_id){
             $movie->delete();
         }
         
-        return back;
+        return back();
     }
 }
