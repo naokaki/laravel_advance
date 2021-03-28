@@ -31,14 +31,14 @@ class UsersController extends Controller
     
     public function rename(Request $request){
         $this->validate($request,[
-            "channnel" => "required|max:15",
+            "channel" => "required|max:15",
             "name" => "required|max:15",
         ]);
         
         $user=\Auth::user();
         $movies = $user->movies()->orderBy("id", "desc")->paginate(9);
         
-        $user->channnel = $request->channel;
+        $user->channel = $request->channel;
         $user->name = $request->name;
         $user->save();
         
@@ -49,7 +49,7 @@ class UsersController extends Controller
         
         $data += $this->counts($user);
         
-        return view("user.show", $data);
+        return view("users.show", $data);
     }
     
     public function followings($id){
