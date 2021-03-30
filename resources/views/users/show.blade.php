@@ -7,6 +7,8 @@
 
     @include('movies.movies', ['movies' => $movies])
     
+    
+    
 @if(Auth::id() == $user->id)
     <h3 class="mt-5">表示名の変更</h3>
         
@@ -27,6 +29,14 @@
                 {!! Form::submit("更新する？", ["class" => "button btn btn-primary mt-2"]) !!}
             {!! Form::close() !!}
                 
+        </div>
+    </div>
+    
+    <h3 class="mt-5">退会</h3>
+    
+    <div class="row mt-5 mb-5">
+        <div class="col-sm-6">
+            {!! link_to_route('deleteUserConfirm','退会する？',['id'=>Auth::id()],['class'=>'button btn btn-danger mt-2']) !!}
         </div>
     </div>
 @endif

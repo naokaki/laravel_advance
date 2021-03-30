@@ -25,6 +25,8 @@ Route::resource("users", "UsersController", ["only" => ["show"]]);
 Route::group(['prefix' => 'users/{id}'], function(){
     Route::get('followings', 'UsersController@followings')->name('followings');
     Route::get('followers', 'UsersController@followers')->name('followers');
+    Route::get("deleteUserConfirm", "UsersController@deleteUserConfirm")->name("deleteUserConfirm");
+    Route::get("deleteUser", "UsersController@deleteUser")->name("deleteUser");
     });
 
 Route::resource("rest", "RestappController", ["only" => ["index", "show", "create", "store", "destroy"]]);
